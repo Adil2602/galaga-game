@@ -25,7 +25,9 @@ enemy = pygame.image.load('/home/adil/Desktop/game/images/ufo.png')
 bullet = pygame.image.load('/home/adil/Desktop/game/images/bullet.png')
 background = pygame.image.load('/home/adil/Desktop/game/images/background.jpg')
 
-# Создаем игрока
+# Создаем класс игрока, наследуемый от Sprite.
+# Инициализируем изображение и его положение.
+# Метод update обрабатывает движение игрока влево и вправо.
 class Player(Sprite):
     def __init__(self):
         super().__init__()
@@ -40,7 +42,8 @@ class Player(Sprite):
         if keys[pygame.K_RIGHT] and self.rect.right < WIDTH:
             self.rect.x += 5 
         
-# Создаем врага
+# Создаем класс врага, наследуемый от Sprite.
+# Инициализируем изображение, положение, скорость и направление врага.
 class Enemy(Sprite):
     def __init__(self, level=1) -> None:
         super().__init__()
