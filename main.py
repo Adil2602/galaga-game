@@ -17,7 +17,11 @@ WHITE = (255, 255, 255)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Galaga")
 
-# sound = pygame.mixer.Sound('/home/adil/Desktop/game/lazer-lazernyiy-vyistrel-27908.mp3')
+sound = pygame.mixer.Sound('/home/adil/Desktop/game/sounds/sound_bullet.mp3')
+# Загрузка и воспроизведение музыки в формате MOD
+pygame.mixer.music.load('/home/adil/Desktop/game/sounds/John Williams - Имперский марш (OST Звездные войны).mp3')
+pygame.mixer.music.play(-1)  # -1 означает воспроизведение бесконечно
+
 
 # Спрайты для игры (изображения)
 player = pygame.image.load('/home/adil/Desktop/game/images/spaceship.png')
@@ -121,7 +125,7 @@ while running:
                 bullet_1 = Bullet(player_1.rect.centerx,player_1.rect.top)
                 all_sprite.add(bullet_1)
                 bullets.add(bullet_1)
-                # sound.play()
+                sound.play()
     now = pygame.time.get_ticks()
     if now - enemy_spawn_timer > 2000:
         new_enemy = Enemy(level)
@@ -168,5 +172,6 @@ while running:
 
     pygame.display.flip()
     clock.tick(FPS)
+pygame.mixer.quit()
 pygame.quit()
 sys.exit()
